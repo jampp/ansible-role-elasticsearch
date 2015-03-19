@@ -1,0 +1,19 @@
+---
+#
+# Multiple configuration for ES service
+#
+
+- name: sysctl configs
+  debug: msg='TODO'
+  #notify: elasticsearch restart
+
+- name: elasticsearch.yml
+  template:
+    src=etc/elasticsearch/elasticsearch.yml.j2
+    dest=/etc/elasticsearch/elasticsearch.yml
+    owner='root'
+    group='root'
+    mode='0644'
+  notify: elasticsearch restart
+
+# vi:ts=2:sw=2:et:ft=yaml

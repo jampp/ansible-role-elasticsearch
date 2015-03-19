@@ -1,0 +1,16 @@
+---
+
+- include: repository.yml
+  sudo: yes
+  tags: es_repository
+
+- include: install.yml
+  sudo: yes
+  tags: es_install
+
+- include: config.yml
+  sudo: yes
+  tags: es_config
+
+
+# vi:ts=2:sw=2:et:ft=yaml
