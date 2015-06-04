@@ -1,16 +1,16 @@
 ---
 
-es_cluster_name: elasticsearch
-es_node_name:    "{{inventory_hostname}}"
-es_node_master:  true
-es_node_data:    true
+es_cfg_cluster_name: elasticsearch
+es_cfg_node_name:    "{{inventory_hostname}}"
+es_cfg_node_master:  'true'
+es_cfg_node_data:    'true'
 
-es_index_num_shards:   5
-es_index_num_replicas: 1
+es_cfg_index_num_shards:   5
+es_cfg_index_num_replicas: 1
 
-es_path_logs: /var/log/elasticsearch
-es_path_data: 
+es_cfg_path_logs: /var/log/elasticsearch
+es_cfg_path_data: 
   - /var/lib/elasticsearch
 
-es_host: "{{ansible_default_ipv4.address}}"
+es_cfg_host: "{{ansible_default_ipv4.address}}"
 

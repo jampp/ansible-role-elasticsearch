@@ -29,8 +29,8 @@
 # Cluster name identifies your cluster for auto-discovery. If you're running
 # multiple clusters on the same network, make sure you're using unique names.
 #
-{% if es.config.cluster_name is defined %}
-cluster.name: {{es.config.cluster_name}}
+{% if es_cfg_cluster_name is defined %}
+cluster.name: {{es_cfg_cluster_name}}
 {% else %}
 #cluster.name: elasticsearch
 {% endif %}
@@ -41,8 +41,8 @@ cluster.name: {{es.config.cluster_name}}
 # Node names are generated dynamically on startup, so you're relieved
 # from configuring them manually. You can tie this node to a specific name:
 #
-{% if es.config.node_name is defined %}
-node.name: {{es.config.node_name}}
+{% if es_cfg_node_name is defined %}
+node.name: {{es_cfg_node_name}}
 {% else %}
 #node.name: "Franz Kafka"
 {% endif %}
@@ -52,16 +52,16 @@ node.name: {{es.config.node_name}}
 #
 # Allow this node to be eligible as a master node (enabled by default):
 #
-{% if es.config.node_master is defined %}
-node.master: {{es.config.node_master}}
+{% if es_cfg_node_master is defined %}
+node.master: {{es_cfg_node_master}}
 {% else %}
 #node.master: true
 {% endif %}
 #
 # Allow this node to store data (enabled by default):
 #
-{% if es.config.node_data is defined %}
-node.data: {{es.config.node_data}}
+{% if es_cfg_node_data is defined %}
+node.data: {{es_cfg_node_data}}
 {% else %}
 #node.data: true
 {% endif %}
@@ -120,16 +120,16 @@ node.data: {{es.config.node_data}}
 
 # Set the number of shards (splits) of an index (5 by default):
 #
-{% if es.config.index_number_of_shards is defined %}
-index.number_of_shards: {{es.config.index_number_of_shards}}
+{% if es_cfg_index_number_of_shards is defined %}
+index.number_of_shards: {{es_cfg_index_number_of_shards}}
 {% else %}
 #index.number_of_shards: 5
 {% endif %}
 
 # Set the number of replicas (additional copies) of an index (1 by default):
 #
-{% if es.config.index_number_of_replicas is defined %}
-index.number_of_replicas: {{es.config.index_number_of_replicas}}
+{% if es_cfg_index_number_of_replicas is defined %}
+index.number_of_replicas: {{es_cfg_index_number_of_replicas}}
 {% else %}
 #index.number_of_replicas: 1
 {% endif %}
@@ -176,8 +176,8 @@ index.number_of_replicas: {{es.config.index_number_of_replicas}}
 # the locations (a la RAID 0) on a file level, favouring locations with most free
 # space on creation. For example:
 #
-{% if es.config.path_data is defined %}
-path.data: {{es.config.path_data}}
+{% if es_cfg_path_data is defined %}
+path.data: {{es_cfg_path_data}}
 {% else %}
 #path.data: /path/to/data1,/path/to/data2
 {% endif %}
@@ -188,8 +188,8 @@ path.data: {{es.config.path_data}}
 
 # Path to log files:
 #
-{% if es.config.path_logs is defined %}
-path.logs: {{es.config.path_logs}}
+{% if es_cfg_path_logs is defined %}
+path.logs: {{es_cfg_path_logs}}
 {% else %}
 #path.logs: /path/to/logs
 {% endif %}
@@ -232,8 +232,8 @@ path.logs: {{es.config.path_logs}}
 
 # Set the bind address specifically (IPv4 or IPv6):
 #
-{% if es.config.bind_host is defined %}
-network.bind_host: {{es.config.bind_host}}
+{% if es_cfg_bind_host is defined %}
+network.bind_host: {{es_cfg_bind_host}}
 {% else %}
 #network.bind_host: 192.168.0.1
 {% endif %}
@@ -241,24 +241,24 @@ network.bind_host: {{es.config.bind_host}}
 # Set the address other nodes will use to communicate with this node. If not
 # set, it is automatically derived. It must point to an actual IP address.
 #
-{% if es.config.publish_host is defined %}
-network.publish_host: {{es.config.publish_host}}
+{% if es_cfg_publish_host is defined %}
+network.publish_host: {{es_cfg_publish_host}}
 {% else %}
 #network.publish_host: 192.168.0.1
 {% endif %}
 
 # Set both 'bind_host' and 'publish_host':
 #
-{% if es.config.host is defined %}
-network.host: {{es.config.host}}
+{% if es_cfg_host is defined %}
+network.host: {{es_cfg_host}}
 {% else %}
 #network.host: 192.168.0.1
 {% endif %}
 
 # Set a custom port for the node to node communication (9300 by default):
 #
-{% if es.config.tcp_port is defined %}
-transport.tcp.port: {{es.config.tcp_port}}
+{% if es_cfg_tcp_port is defined %}
+transport.tcp.port: {{es_cfg_tcp_port}}
 {% else %}
 #transport.tcp.port: 9300
 {% endif %}
@@ -269,8 +269,8 @@ transport.tcp.port: {{es.config.tcp_port}}
 
 # Set a custom port to listen for HTTP traffic:
 #
-{% if es.config.http_port is defined %}
-http.port: {{es.config.http_port}}
+{% if es_cfg_http_port is defined %}
+http.port: {{es_cfg_http_port}}
 {% else %}
 #http.port: 9200
 {% endif %}
@@ -281,8 +281,8 @@ http.port: {{es.config.http_port}}
 
 # Disable HTTP completely:
 #
-{% if es.config.http_enabled is defined %}
-http.enabled: {{es.config.http_enabled}}
+{% if es_cfg_http_enabled is defined %}
+http.enabled: {{es_cfg_http_enabled}}
 {% else %}
 #http.enabled: false
 {% endif %}
@@ -374,7 +374,9 @@ http.enabled: {{es.config.http_enabled}}
 #
 # 1. Disable multicast discovery (enabled by default):
 #
-#discovery.zen.ping.multicast.enabled: false
+
+discovery.zen.ping.multicast.enabled: false
+
 #
 # 2. Configure an initial list of master nodes in the cluster
 #    to perform discovery when new nodes (master or data) are started:

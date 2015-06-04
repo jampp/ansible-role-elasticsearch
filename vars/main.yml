@@ -13,15 +13,4 @@ es:
     pkg_prereqs:
       - openjdk-7-jdk
 
-  config:
-    cluster_name:       "{{es_cluster_name|default('ElasticSearch')}}"
-    node_name:          "{{es_node_name|default(inventory_hostname)}}"
-    node_master:        "{{es_node_master|default(true)}}"
-    node_data:          "{{es_node_data|default(true)}}"
-    index_num_shards:   "{{es_index_num_shards|default('5')}}"
-    index_num_replicas: "{{es_index_num_replicas|default('5')}}"
-    path_data:          "{{es_path_data}}"
-    path_logs:          "{{es_path_logs}}"
-    host:               "{{es_host}}"
-
 # vi:ts=2:sw=2:et:ft=yaml

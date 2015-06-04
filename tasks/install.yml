@@ -21,6 +21,6 @@
     owner="{{es.owner}}"
     group="{{es.group}}"
     mode='0750'
-  with_items: es.config.path_data
+  with_items: es_cfg_path_data
 
 # vi:ts=2:sw=2:et:ft=yaml
