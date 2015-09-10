@@ -1,12 +1,12 @@
 ---
 
-- name: Data Directory
+- name: Data Directories
   file:
     state=directory
     dest="{{item}}"
-    owner="{{es.owner}}"
-    group="{{es.group}}"
-    mode='0750'
+    owner="{{es_user}}"
+    group="{{es_group}}"
+    mode="0750"
   with_items: es_cfg_path_data
 
 
