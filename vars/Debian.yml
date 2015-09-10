@@ -1,0 +1,10 @@
+---
+
+es_apt_key: https://packages.elasticsearch.org/GPG-KEY-elasticsearch
+es_apt_repository: "http://packages.elasticsearch.org/elasticsearch/{{es_version}}/debian"
+
+es_packages:
+  - elasticsearch
+  - openjdk-8-jdk
+
+# vi:ts=2:sw=2:et:ft=yaml

@@ -1,26 +1,9 @@
 ---
-#
-# Install package and dependencies
-#
 
-- name: Install prerequisites
-  apt:
-    name={{item}}
-    state=present
-  with_items: es.apt.pkg_prereqs
+- include: install/Debian.yml
+  when: ansible_os_family == 'Debian'
 
-- name: Install package
-  apt:
-    name={{es.apt.pkg}}
-    state=present
-
-- name: Data Directory
-  file:
-    state=directory
-    dest="{{item}}"
-    owner="{{es.owner}}"
-    group="{{es.group}}"
-    mode='0750'
-  with_items: es_cfg_path_data
+- include: install/RedHat.yml
+  when: ansible_os_family == 'RedHat'
 
 # vi:ts=2:sw=2:et:ft=yaml

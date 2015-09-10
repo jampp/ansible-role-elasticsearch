@@ -1,11 +1,11 @@
 ---
 
-- include: repository.yml
-  sudo: yes
-  tags: es_repository
+- name: Include OS Family vars
+  include_vars: "{{ansible_os_family}}.yml"
+  tags: always
 
 - include: install.yml
-  sudo: yes
+  sudo: true
   tags: es_install
 
 - include: config.yml
