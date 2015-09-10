@@ -1,5 +1,10 @@
 ---
 
+es_user:  elasticsearch
+es_group: elasticsearch
+
+es_version: 1.5
+
 es_cfg_cluster_name: elasticsearch
 es_cfg_node_name:    "{{inventory_hostname}}"
 es_cfg_node_master:  'true'
