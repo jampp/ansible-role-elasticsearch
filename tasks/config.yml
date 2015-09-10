@@ -1,7 +1,14 @@
 ---
-#
-# Multiple configuration for ES service
-#
+
+- name: Data Directory
+  file:
+    state=directory
+    dest="{{item}}"
+    owner="{{es.owner}}"
+    group="{{es.group}}"
+    mode='0750'
+  with_items: es_cfg_path_data
+
 
 - name: sysctl configs
   debug: msg='TODO'
