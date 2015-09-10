@@ -1,21 +1,54 @@
 ---
 
+# ElasticSearch user and group
+#
 es_user:  elasticsearch
 es_group: elasticsearch
 
+
+# ElasticSearch version to use
+# 
 es_version: 1.5
 
-es_cfg_cluster_name: elasticsearch
-es_cfg_node_name:    "{{inventory_hostname}}"
-es_cfg_node_master:  'true'
-es_cfg_node_data:    'true'
 
+# Some defaults
+#
+es_cfg_cluster_name:       elasticsearch
+es_cfg_node_master:        'true'
+es_cfg_node_data:          'true'
 es_cfg_index_num_shards:   5
 es_cfg_index_num_replicas: 1
-
-es_cfg_path_logs: /var/log/elasticsearch
-es_cfg_path_data: 
+es_cfg_log_dir:            /var/log/elasticsearch
+es_cfg_path_data:
   - /var/lib/elasticsearch
+ 
 
-es_cfg_host: "{{ansible_default_ipv4.address}}"
+# ElasticSearch default configuration
+#
+es_config_default: |
+  cluster.name: {{es_cfg_cluster_name}}
+  node.master:  {{es_cfg_node_master}}
+  node.data:    {{es_cfg_node_data}}
 
+  index.num_shards:   {{es_cfg_index_num_shards}}
+  index.num_replicas: {{es_cfg_index_num_replicas}}
+
+  path.logs: {{es_cfg_log_dir}}
+  path.data: {{es_cfg_path_data}}
+
+
+# ElasticSearch configuration
+#  Configuration is provided as a YAML multiline block,
+#  
+#  If the defaults are ok for you, and the only ones you
+#  need, leave it as it is.
+#  If you need more specific options just redefine 
+#  es_config.
+#
+#  It is a good idea to define path.data using 
+#  es_cfg_path_data as the role will take care that the
+#  directories actually exist.
+#
+es_config: "{{es_config_default}}"
+
+# vi:ts=2:sw=2:et:ft=yaml
