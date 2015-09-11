@@ -1,13 +1,13 @@
 ---
 
-- name: ElasticSearch Plugins
+- name: ElasticSearch Check Installed Plugins
   command: "bin/plugin --list"
   args:
     chdir: "{{es_install_dir}}"
   register: installed_plugins
 
 - name: ElasticSearch Plugins
-  command: "bin/plugin install {{item.name}}"
+  command: "bin/plugin install {{item.src}}"
   args:
     chdir: "{{es_install_dir}}"
   when: "installed_plugins.stdout.find(item.name) == -1"
