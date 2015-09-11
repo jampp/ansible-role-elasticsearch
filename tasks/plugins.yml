@@ -1,0 +1,16 @@
+---
+
+- name: ElasticSearch Plugins
+  command: "bin/plugin --list"
+  args:
+    chdir: "{{es_install_dir}}"
+  register: installed_plugins
+
+- name: ElasticSearch Plugins
+  command: "bin/plugin install {{item.name}}"
+  args:
+    chdir: "{{es_install_dir}}"
+  when: "installed_plugins.stdout.find(item.name) == -1"
+  with_items: es_plugins
+
+# vi:ts=2:sw=2:et:ft=yaml

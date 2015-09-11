@@ -1,6 +1,6 @@
 ---
-- hosts: all
-  sudo: yes
+- hosts: localhost
+  remote_user: root
 
   vars:
     - es_plugins:
@@ -8,4 +8,6 @@
         - { name: head,      src: mobz/elasticsearch-head }
 
   roles:
-    - ansible-role-elasticsearch
+    - { role: ansible-role-elasticsearch }
+
+# vi:ts=2:sw=2:et:ft=yaml

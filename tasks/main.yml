@@ -8,6 +8,10 @@
   sudo: true
   tags: es_install
 
+- include: plugins.yml
+  sudo: yes
+  tags: es_plugins
+
 - include: config.yml
   sudo: yes
   tags: es_config

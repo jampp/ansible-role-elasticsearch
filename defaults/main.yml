@@ -8,7 +8,19 @@ es_group: elasticsearch
 
 # ElasticSearch version to use
 # 
-es_version: 1.5
+es_version: 1.7
+
+# Installation directory
+es_install_dir: "/usr/share/elasticsearch"
+
+# ElasticSearch plugins
+#  List of plugins. Each entry mut have the following attrs:
+#   name: as returned by `plugin --list`
+#   src:  user/plugin[/version]
+#
+es_plugins: []
+#  - { name: cloud-aws, src: elasticsearch/elasticsearch-cloud-aws/2.7.1 }
+#  - { name: head,      src: mobz/elasticsearch-head }
 
 
 # Some defaults
