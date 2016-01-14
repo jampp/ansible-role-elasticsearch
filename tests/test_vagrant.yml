@@ -4,9 +4,9 @@
 
   vars:
     - es_version: 2.1.1
+    - es_upgrade: true
     - es_plugins:
-        - { name: cloud-aws, src: cloud-aws }
-        - { name: head,      src: mobz/elasticsearch-head }
+        - { name: head, src: mobz/elasticsearch-head }
 
   roles:
     - ansible-role-elasticsearch
