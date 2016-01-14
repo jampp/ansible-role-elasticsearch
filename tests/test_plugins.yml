@@ -4,7 +4,7 @@
 
   vars:
     - es_plugins:
-        - { name: cloud-aws, src: elasticsearch/elasticsearch-cloud-aws/2.7.1 }
+        - { name: cloud-aws, src: cloud-aws }
         - { name: head,      src: mobz/elasticsearch-head }
 
   roles:
