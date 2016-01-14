@@ -2,7 +2,7 @@
 
 - name: Install ElasticSearch (RedHat)
   yum:
-    state=present
+    state="{{ (es_upgrade) | ternary('latest', 'present') }}"
     name="{{item}}"
   with_items: es_packages
 

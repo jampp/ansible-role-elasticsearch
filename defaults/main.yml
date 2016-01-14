@@ -10,6 +10,11 @@ es_group: elasticsearch
 # 
 es_version: 2.1.1
 
+# ElasticSerch version upgrade
+#  This options allows package upgrades. 
+#  Make sure you know what this implies.
+es_upgrade: false
+
 # Installation directory
 es_install_dir: "/usr/share/elasticsearch"
 

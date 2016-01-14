@@ -13,8 +13,9 @@
 
 - name: Install ElasticSearch (Debian)
   apt:
-    state=present
+    state="{{ (es_upgrade) | ternary('latest', 'present') }}"
     name="{{item}}"
   with_items: es_packages
+  notify: elasticsearch restart
 
 # vi:ts=2:sw=2:et:ft=yaml
