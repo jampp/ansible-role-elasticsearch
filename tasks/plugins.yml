@@ -1,7 +1,7 @@
 ---
 
 - name: ElasticSearch Check Installed Plugins
-  command: "bin/plugin {{ (es_v_major > 1) | ternary('list', '--list') }}"
+  command: "bin/plugin {{ ((es_v_major|int) > 1) | ternary('list', '--list') }}"
   args:
     chdir: "{{es_install_dir}}"
   register: installed_plugins
