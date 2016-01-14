@@ -14,6 +14,10 @@ script:
   - ansible-playbook tests/test_defaults.yml -i localhost, --connection=local --sudo
 
   # Test functionality with default values
+  - ansible-playbook tests/test_defaults_1.x.yml -i localhost, --syntax-check 
+  - ansible-playbook tests/test_defaults_1.x.yml -i localhost, --connection=local --sudo
+
+  # Test functionality with default values
   - ansible-playbook tests/test_plugins.yml -i localhost, --syntax-check 
   - ansible-playbook tests/test_plugins.yml -i localhost, --connection=local --sudo
 

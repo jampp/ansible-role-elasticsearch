@@ -8,7 +8,7 @@ es_group: elasticsearch
 
 # ElasticSearch version to use
 # 
-es_version: 1.7
+es_version: 2.1.1
 
 # Installation directory
 es_install_dir: "/usr/share/elasticsearch"
