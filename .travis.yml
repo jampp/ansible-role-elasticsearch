@@ -7,6 +7,7 @@ before_install:
 
 install:
   - pip install ansible==1.9.4
+  - sudo apt-get remove -y --purge elasticsearch
 
 script:
   # Test functionality with default values
