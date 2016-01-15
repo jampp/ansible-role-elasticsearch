@@ -4,8 +4,7 @@
 
   vars:
     - es_plugins:
-        - { name: cloud-aws, src: cloud-aws }
-        - { name: head,      src: mobz/elasticsearch-head }
+        - { name: head, src: mobz/elasticsearch-head }
 
   roles:
     - { role: ansible-role-elasticsearch }
