@@ -2,13 +2,17 @@
 
 [![Build Status](https://travis-ci.org/torian/ansible-role-elasticsearch.svg)](https://travis-ci.org/torian/ansible-role-elasticsearch)
 
-FIXME 
+Ansible role to install [ElasticSearch](https://www.elastic.co/products/elasticsearch)
+through the official repositories
 
-## Tested On
+## Supported Platforms
 
-FIXME
+  * EL / Centos (6 / 7)
+  * Debian (Jessie)
+  * Ubuntu (Trusty)
+  * AMZ Linux
 
-## Defaults
+## Role Variables
 
 FIXME
 
