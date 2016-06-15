@@ -8,7 +8,7 @@ es_group: elasticsearch
 
 # ElasticSearch version to use
 # 
-es_version: 2.1.1
+es_version: 2.3.3
 
 # ElasticSerch version upgrade
 #  This options allows package upgrades. 
