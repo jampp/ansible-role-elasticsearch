@@ -19,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ubuntu.vm.hostname = 'ubuntu'
     
     ubuntu.vm.provision 'shell', inline: 'apt-get update'
-    ubuntu.vm.provision 'shell', inline: 'apt-get install -y -qq  python-pip'
+    ubuntu.vm.provision 'shell', inline: 'apt-get install -y -qq  python-pip python-dev libffi-dev libssl-dev'
     ubuntu.vm.provision 'shell', inline: 'pip install ansible jinja2'
     ubuntu.vm.provision 'shell', inline: 'ln -sf /vagrant /ansible-role-elasticsearch'
 
