@@ -1,9 +1,34 @@
 ---
 
+- name: ElasticSearch Yum Repository
+  copy:
+    dest: "/etc/yum.repos.d/elasticsearch-{{es_version}}.repo"
+    content: "{{es_yum_config}}"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+
 - name: Install ElasticSearch (RedHat)
   yum:
-    state="{{ (es_upgrade) | ternary('latest', 'present') }}"
-    name="{{item}}"
-  with_items: es_packages
+    state: "{{ (es_upgrade) | ternary('latest', 'present') }}"
+    name: "{{item}}"
+    update_cache: yes
+  with_items: "{{es_packages}}"
+  notify: elasticsearch restart
+
+- name: Download ElasticSearch RPM
+  get_url:
+    url: "{{es_package_baseurl}}/{{item}}-{{es_version}}-{{ansible_architecture}}.rpm"
+    dest: "/var/cache/yum/{{ansible_architecture}}/{{item}}-{{es_version}}-{{ansible_architecture}}.rpm"
+  with_items: "{{es_packages}}"
+  when: not es_use_repo
+
+- name: Install ElasticSearch from RPM
+  yum:
+    name: "/var/cache/yum/{{ansible_architecture}}/{{item}}-{{es_version}}-{{ansible_architecture}}.rpm"
+    state: present
+  with_items: "{{es_packages}}"
+  notify: es restart
+  when: not es_use_repo
 
 # vi:ts=2:sw=2:et:ft=yaml

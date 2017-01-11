@@ -3,18 +3,18 @@
 - name: ElasticSearch APT Key
   apt_key: 
     state=present
-    url="{{es_apt_key}}"
+    url="{{es_gpg_key}}"
 
-- name : ElasticSearch APT Repository
+- name: ElasticSearch APT Repository
   apt_repository:
-    state=present
-    repo="deb {{es_apt_repository}} stable main"
-    update_cache=yes
+    state: present
+    repo: "deb {{es_apt_repository}} stable main"
+    update_cache: yes
 
 - name: Install ElasticSearch (Debian)
   apt:
-    state="{{ (es_upgrade) | ternary('latest', 'present') }}"
-    name="{{item}}"
+    state: "{{ (es_upgrade) | ternary('latest', 'present') }}"
+    name: "{{item}}"
   with_items: es_packages
   notify: elasticsearch restart
 

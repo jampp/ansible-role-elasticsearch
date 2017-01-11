@@ -8,7 +8,15 @@ es_group: elasticsearch
 
 # ElasticSearch version to use
 # 
-es_version: 2.3.3
+es_version: 5.x
+
+es_gpg_key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+es_baseurl: "https://artifacts.elastic.co"
+es_repo_baseurl: "{{es_baseurl}}/packages/{{es_version}}"
+es_package_baseurl: "{{es_baseurl}}/downloads/elasticsearch"
+
+es_use_repo: true
 
 # ElasticSerch version upgrade
 #  This options allows package upgrades. 
@@ -24,8 +32,7 @@ es_install_dir: "/usr/share/elasticsearch"
 #   src:  user/plugin[/version]
 #
 es_plugins: []
-#  - { name: cloud-aws, src: elasticsearch/elasticsearch-cloud-aws/2.7.1 }
-#  - { name: head,      src: mobz/elasticsearch-head }
+#  - ingest-geoip
 
 
 # Some defaults
