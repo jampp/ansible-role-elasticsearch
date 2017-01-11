@@ -1,16 +1,16 @@
 ---
 
 - name: ElasticSearch Check Installed Plugins
-  command: "bin/plugin {{ ((es_v_major|int) > 1) | ternary('list', '--list') }}"
+  command: "bin/elasticsearch-plugin list"
   args:
     chdir: "{{es_install_dir}}"
-  register: installed_plugins
+  register: _es_installed_plugins
 
 - name: ElasticSearch Plugins
-  command: "bin/plugin install {{item.src}}"
+  command: "bin/elasticsearch-plugin install {{item}}"
   args:
     chdir: "{{es_install_dir}}"
-  when: "installed_plugins.stdout.find(item.name) == -1"
+  when: "_es_installed_plugins.stdout.find(item) == -1"
   with_items: es_plugins
 
 # vi:ts=2:sw=2:et:ft=yaml
