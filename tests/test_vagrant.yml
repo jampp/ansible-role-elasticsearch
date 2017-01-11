@@ -1,26 +1,25 @@
 ---
-- name: Install ES 2.1
+- name: Install ES
   hosts: all
   sudo: yes
 
   vars:
-    - es_version: 2.1.1
     - es_plugins:
-        - { name: head, src: mobz/elasticsearch-head }
+        - ingest-geoip
 
   roles:
     - ansible-role-elasticsearch
 
 
-- name: Ugrade ES 2.3
-  hosts: all
-  sudo: yes
-
-  vars:
-    - es_version: 2.3.3
-    - es_upgrade: true
-    - es_plugins:
-        - { name: head, src: mobz/elasticsearch-head }
-
-  roles:
-    - ansible-role-elasticsearch
+#- name: Ugrade ES 
+#  hosts: all
+#  sudo: yes
+#
+#  vars:
+#    - es_version: 2.3.3
+#    - es_upgrade: true
+#    - es_plugins:
+#        - { name: head, src: mobz/elasticsearch-head }
+#
+#  roles:
+#    - ansible-role-elasticsearch
