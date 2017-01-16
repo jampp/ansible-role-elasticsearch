@@ -1,5 +1,10 @@
 # Changelog
 
+## 2017-01-15 - 0.3.0
+
+  - ElasticSearch 5.x
+  - Support for RedHat
+
 ## 2016-06-15 - 0.2.0
 
   - ElasticSearch 2.3
