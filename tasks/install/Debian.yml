@@ -1,15 +1,15 @@
 ---
 
 - name: ElasticSearch APT Key
-  apt_key: 
-    state=present
-    url="{{es_gpg_key}}"
+  apt_key:
+    state: present
+    url: "{{es_gpg_key}}"
 
 - name: ElasticSearch APT Repository
   apt_repository:
     state: present
     repo: "deb {{es_apt_repository}} stable main"
-    update_cache: yes
+    update_cache: true
 
 - name: Install ElasticSearch (Debian)
   apt:

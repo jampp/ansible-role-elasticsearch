@@ -2,25 +2,26 @@
 
 - name: Data Directories
   file:
-    state=directory
-    dest="{{item}}"
-    owner="{{es_user}}"
-    group="{{es_group}}"
-    mode="0750"
-  with_items: es_cfg_path_data
+    state: directory
+    dest: "{{item}}"
+    owner: "{{es_user}}"
+    group: "{{es_group}}"
+    mode: "0750"
+  with_items: "{{es_cfg_path_data}}"
 
 
 - name: sysctl configs
-  debug: msg='TODO'
+  debug:
+    msg: 'TODO'
   #notify: elasticsearch restart
 
 - name: elasticsearch.yml
   template:
-    src=etc/elasticsearch/elasticsearch.yml.j2
-    dest=/etc/elasticsearch/elasticsearch.yml
-    owner='root'
-    group='root'
-    mode='0644'
+    src: etc/elasticsearch/elasticsearch.yml.j2
+    dest: /etc/elasticsearch/elasticsearch.yml
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
   notify: elasticsearch restart
 
 # vi:ts=2:sw=2:et:ft=yaml
