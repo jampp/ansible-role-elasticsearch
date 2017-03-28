@@ -34,7 +34,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ubuntu_t.vm.provision 'shell', inline: 'apt-get update'
     ubuntu_t.vm.provision 'shell', inline: 'apt-get install -y -qq  python-pip libffi-dev libssl-dev python-dev'
     ubuntu_t.vm.provision 'shell', inline: 'apt-get install -y -qq  openjdk-8-jre'
-    ubuntu_t.vm.provision 'shell', inline: 'pip install ansible==2.2.0.0 ansible-lint jinja2'
+    ubuntu_t.vm.provision 'shell', inline: 'pip install ansible==2.2.1.0 ansible-lint jinja2'
 
     ubuntu_t.vm.provision 'ansible' do |ansible| 
       ansible.playbook = 'tests/test_vagrant.yml'
@@ -52,7 +52,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ubuntu_p.vm.provision 'shell', inline: 'apt-get update'
     ubuntu_p.vm.provision 'shell', inline: 'apt-get install -y -qq  python-pip libffi-dev libssl-dev python-dev'
     ubuntu_p.vm.provision 'shell', inline: 'apt-get install -y -qq  openjdk-8-jre'
-    ubuntu_p.vm.provision 'shell', inline: 'pip install ansible==2.2.0.0 ansible-lint jinja2'
+    ubuntu_p.vm.provision 'shell', inline: 'pip install ansible==2.2.1.0 ansible-lint jinja2'
 
     ubuntu_p.vm.provision 'ansible' do |ansible| 
       ansible.playbook = 'tests/test_vagrant.yml'
@@ -71,7 +71,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     centos6.vm.provision 'shell', inline: 'yum install -y python-pip python-devel gcc libffi-devel openssl-devel'
     centos6.vm.provision 'shell', inline: 'yum install -y java-1.8.0-openjdk.x86_64'
     centos6.vm.provision 'shell', inline: 'pip install -q pip --upgrade'
-    centos6.vm.provision 'shell', inline: 'pip install -q ansible==2.2.0.0 ansible-lint jinja2'
+    centos6.vm.provision 'shell', inline: 'pip install -q ansible==2.2.1.0 ansible-lint jinja2'
 
     centos6.vm.provision 'ansible' do |ansible| 
       ansible.playbook   = 'tests/test_vagrant.yml'
@@ -89,7 +89,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     centos7.vm.provision 'shell', inline: 'yum install -y python-pip python-devel gcc libffi-devel openssl-devel'
     centos7.vm.provision 'shell', inline: 'yum install -y java-1.8.0-openjdk.x86_64'
     centos7.vm.provision 'shell', inline: 'pip install -q pip --upgrade'
-    centos7.vm.provision 'shell', inline: 'pip install -q ansible==2.2.0.0 ansible-lint jinja2'
+    centos7.vm.provision 'shell', inline: 'pip install -q ansible==2.2.1.0 ansible-lint jinja2'
 
     centos7.vm.provision 'ansible' do |ansible| 
       ansible.playbook = 'tests/test_vagrant.yml'

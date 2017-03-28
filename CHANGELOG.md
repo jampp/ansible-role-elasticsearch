@@ -1,5 +1,10 @@
 # Changelog
 
+## 2017-03-28 - 0.3.1
+
+  - Ansible lint - Use become instead of deprecated sudo
+  - Ansible lint - Escaped bare vars
+
 ## 2017-01-15 - 0.3.0
 
   - ElasticSearch 5.x
