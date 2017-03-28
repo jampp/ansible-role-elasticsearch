@@ -5,12 +5,13 @@
   args:
     chdir: "{{es_install_dir}}"
   register: _es_installed_plugins
+  tags: skip_ansible_lint
 
 - name: ElasticSearch Plugins
   command: "bin/elasticsearch-plugin install {{item}}"
   args:
     chdir: "{{es_install_dir}}"
   when: "_es_installed_plugins.stdout.find(item) == -1"
-  with_items: es_plugins
+  with_items: "{{es_plugins}}"
 
 # vi:ts=2:sw=2:et:ft=yaml

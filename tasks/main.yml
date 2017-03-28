@@ -5,15 +5,15 @@
   tags: always
 
 - include: install.yml
-  sudo: true
+  become: true
   tags: es_install
 
 - include: plugins.yml
-  sudo: yes
+  become: true
   tags: es_plugins
 
 - include: config.yml
-  sudo: yes
+  become: true
   tags: es_config
 
 

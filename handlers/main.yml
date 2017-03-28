@@ -1,14 +1,19 @@
 ---
 
 - name: elasticsearch start
-  service: name=elasticsearch state=started
-  sudo: yes
+  service:
+    name: elasticsearch
+    state: started
+  become: true
 
 - name: elasticsearch stop
-  service: name=elasticsearch state=stopped
-  sudo: yes
+  service:
+    name: elasticsearch
+    state: stopped
+  become: true
 
 - name: elasticsearch restart
-  service: name=elasticsearch state=restarted
-  sudo: yes
-
+  service:
+    name: elasticsearch
+    state: restarted
+  become: true
