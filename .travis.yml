@@ -6,11 +6,11 @@ notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
     
 before_install:
-  - sudo add-apt-repository ppa:openjdk-r/ppa
+  - sudo add-apt-repository -y ppa:openjdk-r/ppa
   - sudo apt-get update -qq
 
 install:
-  - pip install ansible==2.2.0.0
+  - pip install ansible==2.2.2.0
   - sudo apt-get install -y -qq openjdk-8-jre
   - sudo apt-get remove -y --purge elasticsearch
 
