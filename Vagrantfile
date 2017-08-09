@@ -2,6 +2,8 @@ VAGRANTFILE_API_VERSION = '2'
 
 ANSIBLE_VERSION = '2.3.0.0'
 
+ANSIBLE_ROLE = "ansible-role-elasticsearch"
+
 EPEL_REPO_6 = '''
 [epel]
 name     = EPEL 6 - \$basearch
@@ -37,6 +39,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ubuntu_x.vm.provision 'shell', inline: 'apt-get install -y -qq  python-pip libffi-dev libssl-dev python-dev'
     ubuntu_x.vm.provision 'shell', inline: 'apt-get install -y -qq  openjdk-8-jre'
     ubuntu_x.vm.provision 'shell', inline: "pip install -q ansible==#{ANSIBLE_VERSION} ansible-lint jinja2"
+    ubuntu_x.vm.provision 'shell', inline: "ln -sf /vagrant /vagrant/#{ANSIBLE_ROLE}"
 
     ubuntu_x.vm.provision 'ansible_local' do |ansible| 
       ansible.playbook = 'tests/test_vagrant.yml'
@@ -55,6 +58,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ubuntu_t.vm.provision 'shell', inline: 'apt-get install -y -qq  python-pip libffi-dev libssl-dev python-dev'
     ubuntu_t.vm.provision 'shell', inline: 'apt-get install -y -qq  openjdk-8-jre'
     ubuntu_t.vm.provision 'shell', inline: "pip install -q ansible==#{ANSIBLE_VERSION} ansible-lint jinja2"
+    ubuntu_t.vm.provision 'shell', inline: "ln -sf /vagrant /vagrant/#{ANSIBLE_ROLE}"
 
     ubuntu_t.vm.provision 'ansible_local' do |ansible| 
       ansible.playbook = 'tests/test_vagrant.yml'
@@ -73,6 +77,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ubuntu_p.vm.provision 'shell', inline: 'apt-get install -y -qq  python-pip libffi-dev libssl-dev python-dev'
     ubuntu_p.vm.provision 'shell', inline: 'apt-get install -y -qq  openjdk-8-jre'
     ubuntu_p.vm.provision 'shell', inline: "pip install -q ansible==#{ANSIBLE_VERSION} ansible-lint jinja2"
+    ubuntu_p.vm.provision 'shell', inline: "ln -sf /vagrant /vagrant/#{ANSIBLE_ROLE}"
 
     ubuntu_p.vm.provision 'ansible_local' do |ansible| 
       ansible.playbook = 'tests/test_vagrant.yml'
@@ -92,6 +97,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     centos6.vm.provision 'shell', inline: 'yum install -y java-1.8.0-openjdk.x86_64'
     centos6.vm.provision 'shell', inline: 'pip install -q pip --upgrade'
     centos6.vm.provision 'shell', inline: "pip install -q ansible==#{ANSIBLE_VERSION} ansible-lint jinja2"
+    centos6.vm.provision 'shell', inline: "ln -sf /vagrant /vagrant/#{ANSIBLE_ROLE}"
 
     centos6.vm.provision 'ansible_local' do |ansible| 
       ansible.playbook   = 'tests/test_vagrant.yml'
@@ -110,6 +116,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     centos7.vm.provision 'shell', inline: 'yum install -y java-1.8.0-openjdk.x86_64'
     centos7.vm.provision 'shell', inline: 'pip install -q pip --upgrade'
     centos7.vm.provision 'shell', inline: "pip install -q ansible==#{ANSIBLE_VERSION} ansible-lint jinja2"
+    centos7.vm.provision 'shell', inline: "ln -sf /vagrant /vagrant/#{ANSIBLE_ROLE}"
 
     centos7.vm.provision 'ansible_local' do |ansible| 
       ansible.playbook = 'tests/test_vagrant.yml'

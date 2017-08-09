@@ -4,7 +4,7 @@
 
   vars:
     - es_plugins:
-        - { name: head, src: mobz/elasticsearch-head }
+        - ingest-geoip
 
   roles:
     - { role: ansible-role-elasticsearch }
