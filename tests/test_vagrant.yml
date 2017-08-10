@@ -5,6 +5,7 @@
   become: true
 
   vars:
+    - es_jvm_mem: 256m
     - es_plugins:
         - ingest-geoip
 
@@ -18,6 +19,7 @@
 
   vars:
     - es_version: 5.5.0
+    - es_jvm_mem: 256m
     - es_use_repo: false
 
   roles:
