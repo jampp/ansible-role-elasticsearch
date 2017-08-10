@@ -15,6 +15,7 @@ install:
   - sudo apt-get remove -y --purge elasticsearch
 
 script:
+  - java -version
   - ansible-playbook tests/test_defaults.yml -i localhost, --syntax-check 
   - ansible-playbook tests/test_defaults.yml -i localhost, --connection=local --sudo
 
