@@ -1,25 +1,26 @@
 ---
-- name: Install ES
+
+- name: Defaults
   hosts: all
-  sudo: yes
+  become: true
 
   vars:
     - es_plugins:
         - ingest-geoip
 
   roles:
-    - ansible-role-elasticsearch
+    - { role: ansible-role-elasticsearch }
 
 
-#- name: Ugrade ES 
-#  hosts: all
-#  sudo: yes
-#
-#  vars:
-#    - es_version: 2.3.3
-#    - es_upgrade: true
-#    - es_plugins:
-#        - { name: head, src: mobz/elasticsearch-head }
-#
-#  roles:
-#    - ansible-role-elasticsearch
+- name: Install from url
+  hosts: all
+  become: true
+
+  vars:
+    - es_version: 5.5.0
+    - es_use_repo: false
+
+  roles:
+    - { role: ansible-role-elasticsearch }
+
+# vi:ts=2:sw=2:et:ft=yaml

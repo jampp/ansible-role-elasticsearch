@@ -3,6 +3,7 @@
   remote_user: root
 
   vars:
+    - es_jvm_mem: 512m
     - es_plugins:
         - ingest-geoip
 
