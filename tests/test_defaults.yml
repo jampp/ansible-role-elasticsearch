@@ -4,6 +4,7 @@
   remote_user: root
 
   vars:
+    - es_version: 5.x
     - es_jvm_mem: 512m
 
   roles:
