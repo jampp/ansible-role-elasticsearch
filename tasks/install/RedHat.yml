@@ -7,6 +7,7 @@
     owner: "root"
     group: "root"
     mode: "0644"
+  when: es_use_repo
 
 - name: Install ElasticSearch (RedHat)
   yum:
@@ -15,17 +16,18 @@
     update_cache: yes
   with_items: "{{es_packages}}"
   notify: elasticsearch restart
+  when: es_use_repo
 
 - name: Download ElasticSearch RPM
   get_url:
-    url: "{{es_package_baseurl}}/{{item}}-{{es_version}}-{{ansible_architecture}}.rpm"
-    dest: "/var/cache/yum/{{ansible_architecture}}/{{item}}-{{es_version}}-{{ansible_architecture}}.rpm"
+    url: "{{es_package_baseurl}}/{{item}}-{{es_version}}.rpm"
+    dest: "/var/cache/yum/{{ansible_architecture}}/{{item}}-{{es_version}}.rpm"
   with_items: "{{es_packages}}"
   when: not es_use_repo
 
 - name: Install ElasticSearch from RPM
   yum:
-    name: "/var/cache/yum/{{ansible_architecture}}/{{item}}-{{es_version}}-{{ansible_architecture}}.rpm"
+    name: "/var/cache/yum/{{ansible_architecture}}/{{item}}-{{es_version}}.rpm"
     state: present
   with_items: "{{es_packages}}"
   notify: es restart
