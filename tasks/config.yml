@@ -19,12 +19,16 @@
   notify: elasticsearch restart
 
 - name: elasticsearch.yml
-  template:
-    src:   etc/elasticsearch/elasticsearch.yml.j2
-    dest:  /etc/elasticsearch/elasticsearch.yml
-    owner: "root"
-    group: "root"
-    mode:  "0644"
+  copy:
+    dest:    /etc/elasticsearch/elasticsearch.yml
+    owner:   "root"
+    group:   "root"
+    mode:    "0644"
+    content: |
+      # << Ansible managed file >>
+      
+      {{es_config|to_nice_yaml(indent=2)}}
+      
   notify: elasticsearch restart
 
 # vi:ts=2:sw=2:et:ft=yaml

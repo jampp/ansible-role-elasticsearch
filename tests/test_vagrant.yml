@@ -5,8 +5,7 @@
   become: true
 
   vars:
-    - es_plugins:
-        - ingest-geoip
+    - es_jvm_mem: 256m
 
   roles:
     - { role: ansible-role-elasticsearch }
@@ -17,8 +16,8 @@
   become: true
 
   vars:
-    - es_version: 5.5.0
     - es_use_repo: false
+    - es_jvm_mem: 256m
 
   roles:
     - { role: ansible-role-elasticsearch }

@@ -3,7 +3,8 @@
 es_apt_key: "{{es_gpg_key}}"
 es_apt_repository: "{{es_repo_baseurl}}/apt"
 
-es_packages:
-  - elasticsearch
+es_package: "elasticsearch={{es_version}}"
+
+es_package_url: "{{es_package_baseurl}}/elasticsearch-{{es_version}}.deb"
 
 # vi:ts=2:sw=2:et:ft=yaml

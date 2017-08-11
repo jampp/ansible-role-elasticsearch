@@ -4,18 +4,28 @@
   apt_key:
     state: present
     url: "{{es_gpg_key}}"
+  when: es_use_repo
 
 - name: ElasticSearch APT Repository
   apt_repository:
     state: present
     repo: "deb {{es_apt_repository}} stable main"
     update_cache: true
+  when: es_use_repo
 
-- name: Install ElasticSearch (Debian)
-  apt:
-    state: "{{ (es_upgrade) | ternary('latest', 'present') }}"
-    name: "{{item}}"
-  with_items: "{{es_packages}}"
-  notify: elasticsearch restart
+- block:
+
+  - name: Download ElasticSearch DEB
+    get_url:
+      url: "{{es_package_url}}"
+      dest: "/var/cache/apt/archives/elasticsearch-{{es_version}}.deb"
+
+  - name: Install ElasticSearch from DEB
+    apt:
+      deb: "/var/cache/apt/archives/elasticsearch-{{es_version}}.deb"
+      state: present
+    notify: elasticsearch restart
+
+  when: not es_use_repo
 
 # vi:ts=2:sw=2:et:ft=yaml
