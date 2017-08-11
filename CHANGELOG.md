@@ -1,5 +1,10 @@
 # Changelog
 
+## 2017-08-11 - 0.4.0
+
+  - Fixed package version installation
+  - Configuration moved from string block to yaml
+
 ## 2017-03-28 - 0.3.1
 
   - Ansible lint - Use become instead of deprecated sudo
