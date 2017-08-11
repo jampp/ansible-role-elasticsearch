@@ -6,4 +6,11 @@
 - include: install/RedHat.yml
   when: ansible_os_family == 'RedHat'
 
+- name: Install Elasticsearch
+  package:
+    state: "{{ (es_upgrade) | ternary('latest', 'present') }}"
+    name:  "{{es_package}}"
+  notify: elasticsearch restart
+  when: es_use_repo
+
 # vi:ts=2:sw=2:et:ft=yaml

@@ -10,7 +10,8 @@ es_yum_config: |
   gpgkey={{es_gpg_key}}
   enabled=1
 
-es_packages:
-  - elasticsearch
+es_package: "elasticsearch-{{es_version}}-1"
+
+es_package_url: "{{es_package_baseurl}}/elasticsearch-{{es_version}}.rpm"
 
 # vi:ts=2:sw=2:et:ft=yaml

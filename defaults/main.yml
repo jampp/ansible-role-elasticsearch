@@ -8,12 +8,13 @@ es_group: elasticsearch
 
 # ElasticSearch version to use
 # 
-es_version: 5.x
+es_version: 5.5.0
+es_version_repo: "{{es_version|regex_replace('^([0-9]+)\\..*$', '\\1')}}.x"
 
 es_gpg_key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
 es_baseurl: "https://artifacts.elastic.co"
-es_repo_baseurl: "{{es_baseurl}}/packages/{{es_version}}"
+es_repo_baseurl: "{{es_baseurl}}/packages/{{es_version_repo}}"
 es_package_baseurl: "{{es_baseurl}}/downloads/elasticsearch"
 
 es_use_repo: true
