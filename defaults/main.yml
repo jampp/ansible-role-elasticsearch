@@ -26,7 +26,7 @@ es_upgrade: false
 
 # Installation directory
 es_install_dir: /usr/share/elasticsearch
-es_config_dir:    /etc/elasticsearch
+es_config_dir:  /etc/elasticsearch
 
 
 # ElasticSearch JVM config
@@ -72,10 +72,8 @@ es_plugins: []
 # Some defaults
 #
 es_cfg_cluster_name: elasticsearch
-es_cfg_node_master: 'true'
-es_cfg_node_data: 'true'
-es_cfg_index_number_of_shards:   5
-es_cfg_index_number_of_replicas: 1
+es_cfg_node_master: true
+es_cfg_node_data: true
 es_cfg_log_dir: /var/log/elasticsearch
 es_cfg_path_data:
   - /var/lib/elasticsearch
@@ -83,16 +81,13 @@ es_cfg_path_data:
 
 # ElasticSearch default configuration
 #
-es_config_default: |
-  cluster.name: {{es_cfg_cluster_name}}
-  node.master:  {{es_cfg_node_master}}
-  node.data:    {{es_cfg_node_data}}
+es_config_default:
+  cluster.name: "{{es_cfg_cluster_name}}"
+  node.master:  "{{es_cfg_node_master}}"
+  node.data:    "{{es_cfg_node_data}}"
 
-  index.number_of_shards:   {{es_cfg_index_number_of_shards}}
-  index.number_of_replicas: {{es_cfg_index_number_of_replicas}}
-
-  path.logs: {{es_cfg_log_dir}}
-  path.data: {{es_cfg_path_data}}
+  path.logs: "{{es_cfg_log_dir}}"
+  path.data: "{{es_cfg_path_data}}"
 
 
 # ElasticSearch configuration
