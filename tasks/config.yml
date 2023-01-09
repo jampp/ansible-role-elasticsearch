@@ -18,6 +18,18 @@
     mode:    "0644"
   notify: elasticsearch restart
 
+- name: Log4j2 properties
+  template:
+    src:   etc/elasticsearch/log4j2.properties.j2
+    dest:  "{{es_config_dir}}/log4j2.properties"
+    owner: "root"
+    group: "root"
+    mode:  "0644"
+  notify: elasticsearch restart
+  tags:
+    - es_config
+    - es_log4j2_properties
+
 - name: elasticsearch.yml
   copy:
     dest:    /etc/elasticsearch/elasticsearch.yml
