@@ -55,6 +55,7 @@ es_config_jvm_defaults: |
   -Dlog4j.shutdownHookEnabled=false
   -Dlog4j2.disable.jmx=true
   -Dlog4j.skipJansi=true
+  -Dlog4j.configurationFile={{ es_config_dir }}/log4j2.properties
   -XX:+HeapDumpOnOutOfMemoryError
 
 es_config_jvm: "{{es_config_jvm_defaults}}"
