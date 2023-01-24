@@ -8,7 +8,7 @@ es_group: elasticsearch
 
 # ElasticSearch version to use
 # 
-es_version: 5.5.0
+es_version: 8.6.0
 es_version_repo: "{{es_version|regex_replace('^([0-9]+)\\..*$', '\\1')}}.x"
 
 es_gpg_key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
@@ -39,12 +39,15 @@ es_jvm_mem: 2g
 es_config_jvm_defaults: |
   -Xms{{es_jvm_mem}}
   -Xmx{{es_jvm_mem}}
-  -XX:+UseConcMarkSweepGC
-  -XX:CMSInitiatingOccupancyFraction=75
-  -XX:+UseCMSInitiatingOccupancyOnly
+  -XX:+UseG1GC
   -XX:+AlwaysPreTouch
+  -XX:+ExitOnOutOfMemoryError
+  -XX:+HeapDumpOnOutOfMemoryError
+  -XX:HeapDumpPath=/var/lib/elasticsearch
+  -XX:ErrorFile=/var/log/elasticsearch/hs_err_pid%p.log
   -server
   -Xss1m
+  -Djava.io.tmpdir=${ES_TMPDIR}
   -Djava.awt.headless=true
   -Dfile.encoding=UTF-8
   -Djna.nosys=true
@@ -53,10 +56,9 @@ es_config_jvm_defaults: |
   -Dio.netty.noKeySetOptimization=true
   -Dio.netty.recycler.maxCapacityPerThread=0
   -Dlog4j.shutdownHookEnabled=false
+  -Dlog4j2.formatMsgNoLookups=true
   -Dlog4j2.disable.jmx=true
   -Dlog4j.skipJansi=true
-  -Dlog4j.configurationFile={{ es_config_dir }}/log4j2.properties
-  -XX:+HeapDumpOnOutOfMemoryError
 
 es_config_jvm: "{{es_config_jvm_defaults}}"
 
@@ -73,19 +75,19 @@ es_plugins: []
 # Some defaults
 #
 es_cfg_cluster_name: elasticsearch
-es_cfg_node_master: true
-es_cfg_node_data: true
+es_cfg_node_roles:
+  - master
+  - data
 es_cfg_log_dir: /var/log/elasticsearch
 es_cfg_path_data:
   - /var/lib/elasticsearch
- 
+
 
 # ElasticSearch default configuration
 #
 es_config_default:
   cluster.name: "{{es_cfg_cluster_name}}"
-  node.master:  "{{es_cfg_node_master}}"
-  node.data:    "{{es_cfg_node_data}}"
+  node.roles: "{{es_cfg_node_roles}}"
 
   path.logs: "{{es_cfg_log_dir}}"
   path.data: "{{es_cfg_path_data}}"

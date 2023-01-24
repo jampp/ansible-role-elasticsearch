@@ -14,8 +14,8 @@
     dest:    "{{es_config_dir}}/jvm.options"
     content: "{{es_config_jvm}}"
     owner:   "root"
-    group:   "root"
-    mode:    "0644"
+    group:   "{{es_group}}"
+    mode:    "0660"
   notify: elasticsearch restart
 
 - name: Log4j2 properties
@@ -23,8 +23,8 @@
     src:   etc/elasticsearch/log4j2.properties.j2
     dest:  "{{es_config_dir}}/log4j2.properties"
     owner: "root"
-    group: "root"
-    mode:  "0644"
+    group: "{{es_group}}"
+    mode:  "0660"
   notify: elasticsearch restart
   tags:
     - es_config
@@ -34,20 +34,12 @@
   copy:
     dest:    /etc/elasticsearch/elasticsearch.yml
     owner:   "root"
-    group:   "root"
-    mode:    "0644"
+    group:   "{{es_group}}"
+    mode:    "0660"
     content: |
       # << Ansible managed file >>
       
       {{es_config|to_nice_yaml(indent=2)}}
-  notify: elasticsearch restart
-
-- name: Change elasticsearch ownership, group and permissions
-  ansible.builtin.file:
-    path: /etc/elasticsearch
-    owner: "root"
-    group: "{{es_group}}"
-    mode: "0750"
   notify: elasticsearch restart
 
 # vi:ts=2:sw=2:et:ft=yaml
